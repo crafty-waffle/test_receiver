@@ -25,6 +25,8 @@
  *
  * Print top down with 0.12mm-0.2mm layer height using a 0.4mm-0.6mm nozzle
  *
+ * Scale up x2540 if your slicer expects measurements in mm
+ *
  */
 
 $fn=64;
