@@ -165,6 +165,10 @@ intersection() {
             translate([0, 0, receiver_width/2]) sphere(r=0.425 /2);
         }
 
+        // firing pin access relief
+        translate([receiver_length-7/8, receiver_width/2, 1]) rotate([0, 15, 0])
+            rounded_cube(size=[1, receiver_width*9/16, receiver_height],
+                radius=0.125, apply_to="z", center=true);
         // outer adapter recess
         hull() {
             translate([0, receiver_width/2, center]) rotate([0, 90, 0])
