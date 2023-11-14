@@ -120,7 +120,7 @@ module rounded_cube(size = [1, 1, 1], center = false, radius = 0.5, apply_to = "
 
 center=0.750;
 distance_between_pins=6+7/16;
-receiver_length=6+3/8;
+receiver_length=6+7/16;
 receiver_width=1+3/4;
 receiver_height=1+1/4;
 lug_width=0.490;
@@ -129,8 +129,6 @@ intersection() {
     difference() {
         union() {
             rounded_cube(size=[receiver_length, receiver_width, receiver_height], radius=0.125, apply_to="z");
-            translate([receiver_length, receiver_width/2, receiver_height/2])
-                cube(size=[1+7/64, lug_width, receiver_height], center=true);
 
             // front lug
             translate([lug_width/2, receiver_width/2, -lug_width/2]) difference() {
@@ -147,8 +145,8 @@ intersection() {
             translate([lug_width/2 + distance_between_pins, receiver_width/2, -lug_width/2]) difference() {
                 hull() {
                     rotate([90, 0, 0]) cylinder(r=lug_width/2, h=lug_width, center=true);
-                    translate([0, 0, 1]) rotate([90, 0, 0])
-                        cylinder(r=lug_width/2, h=lug_width, center=true);
+                    translate([0, 0, receiver_height]) rotate([90, 0, 0])
+                        cube(lug_width, center=true);
                 }
                 translate([0, 0, 0]) rotate([90, 0, 0]) cylinder(r=5/16 /2, h=0.5, center=true);
             }
