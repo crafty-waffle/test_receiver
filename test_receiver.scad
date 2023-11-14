@@ -154,9 +154,9 @@ intersection() {
 
         // firing pin channel
         translate([1.85, receiver_width/2, center]) rotate([0, 90, 0]) {
-            cylinder(r=0.165 /2, h=3.155, center=true);
+            cylinder(r=0.180 /2, h=3.155, center=true);
             translate([0, 0.0, 3.155/2 - 0.57/2])
-                cylinder(r=0.380 /2, h=0.57, center=true);
+                cylinder(r=0.395 /2, h=0.57, center=true);
         }
 
         // firing pin retaining pin channel
