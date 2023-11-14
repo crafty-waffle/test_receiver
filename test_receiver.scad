@@ -180,9 +180,9 @@ intersection() {
         // inner adapter recess
         hull() {
             translate([0.25, receiver_width/2, center]) rotate([0, 90, 0])
-                cylinder(r=(1+1/2) /2, h=1/4);
+                cylinder(r=(1+7/16) /2, h=1/4);
             translate([0.25, receiver_width/2, center+1]) rotate([0, 90, 0])
-                cylinder(r=(1+1/2) /2, h=1/4);
+                cylinder(r=(1+7/16) /2, h=1/4);
         }
 
         // hammer relief
