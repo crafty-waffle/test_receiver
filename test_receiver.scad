@@ -185,7 +185,7 @@ intersection() {
 
         // hammer relief
         translate([3.35, receiver_width/2-receiver_width*9/16/2, 0])
-            rounded_cube([2.65 , receiver_width*9/16, 1], radius=0.125, apply_to="z");
+            rounded_cube([2.65 , receiver_width*9/16, receiver_height], radius=0.125, apply_to="z");
 
         // front material reliefs
         translate([0, 4/8, 0]) hull() {
