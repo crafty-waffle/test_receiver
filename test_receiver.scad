@@ -205,4 +205,7 @@ module receiver() {
     }
 }
 
-receiver();
+// convert from imperial to metric
+scale(2540)
+rotate([0, 180, 0])
+    receiver();
