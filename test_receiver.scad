@@ -125,10 +125,15 @@ receiver_width=1+3/4;
 receiver_height=1+1/4;
 lug_width=0.490;
 
-intersection() {
+module receiver() {
     difference() {
         union() {
-            rounded_cube(size=[receiver_length, receiver_width, receiver_height], radius=0.125, apply_to="z");
+            intersection() {
+                rounded_cube(size=[receiver_length, receiver_width, receiver_height], radius=0.125, apply_to="z");
+                 // corner chamfers
+                translate([0, receiver_width/2, -6/8]) rotate([45, 0, 0])
+                    cube([receiver_length+1, receiver_width*1.125, receiver_width*1.125]);
+            }
 
             // front lug
             translate([lug_width/2, receiver_width/2, -lug_width/2]) difference() {
@@ -149,6 +154,15 @@ intersection() {
                         cube(lug_width, center=true);
                 }
                 translate([0, 0, 0]) rotate([90, 0, 0]) cylinder(r=5/16 /2, h=0.5, center=true);
+            }
+
+            // magazine well block
+            block_width=0.975;
+            block_len=2.375;
+            translate([0.690, receiver_width/2-block_width/2, -1.1]) difference() {
+                rounded_cube([block_len, block_width, 1.25], radius=0.125, apply_to="all");
+                translate([1.625, 0, 0.8 - 0.69])
+                    cube([0.3, 0.1, 0.3]);
             }
         }
 
@@ -188,20 +202,7 @@ intersection() {
         // hammer relief
         translate([3.35, receiver_width/2-receiver_width*9/16/2, 0])
             rounded_cube([2.65 , receiver_width*9/16, receiver_height], radius=0.125, apply_to="z");
-
-        // front material reliefs
-        translate([0, 4/8, 0]) hull() {
-            translate([1, 0, -0.5]) cylinder(r=3/16, h=2);
-            translate([2.75, 0, -0.5]) cylinder(r=3/16, h=2);
-        }
-
-        translate([0, receiver_width-4/8, 0]) hull() {
-            translate([1, 0, -0.5]) cylinder(r=3/16, h=2);
-            translate([2.75, 0, -0.5]) cylinder(r=3/16, h=2);
-        }
     }
-
-    // corner chamfers
-    translate([0, receiver_width/2, -6/8]) rotate([45, 0, 0])
-        cube([receiver_length+1, receiver_width*1.125, receiver_width*1.125]);
 }
+
+receiver();
